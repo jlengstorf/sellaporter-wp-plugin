@@ -1334,6 +1334,10 @@ class Sellaporter {
   private function _is_sellaporter_page() {
     global $post;
 
+    if (!$post) {
+      return false;
+    }
+
     // Load the current WordPress post's template.
     $post_template = get_post_meta($post->ID, '_wp_page_template', true);
 
