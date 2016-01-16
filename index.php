@@ -1224,10 +1224,10 @@ class Sellaporter {
     }
 
     // By default, we apply WP's markup filter. If `true`, this disables it.
-    $is_inline_text = $atts['inline'] || false;
+    $is_inline_text = array_key_exists('inline', $atts) ? $atts['inline'] : false;
 
     // Convert the valid phases to an array.
-    $phases_when_text_is_visible = array_map('trim', split(',', $atts['phase']));
+    $phases_when_text_is_visible = array_map('trim', explode(',', $atts['phase']));
     if (in_array($this->get_current_phase(), $phases_when_text_is_visible)) {
 
       /*
