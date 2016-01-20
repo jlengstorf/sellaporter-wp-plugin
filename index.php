@@ -222,6 +222,13 @@ class Sellaporter {
   public function register_shortcodes() {
     add_shortcode('sp', array($this, 'shortcode_phase_conditional'));
     add_shortcode('spButton', array($this, 'shortcode_cta_button'));
+    add_shortcode('spNotice', array($this, 'shortcode_notice'));
+  }
+
+  public function shortcode_notice($atts, $content) {
+    $template = '<small class="sp-text--notice">%s</small>';
+
+    return sprintf($template, $content);
   }
 
   public function shortcode_cta_button($atts, $content) {
