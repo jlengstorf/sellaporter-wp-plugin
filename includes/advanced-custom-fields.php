@@ -4,7 +4,7 @@ if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array (
   'key' => 'group_56921411d5102',
-  'title' => '_Sellaporter',
+  'title' => 'Sellaporter: Time-Aware Sales Page',
   'fields' => array (
     array (
       'key' => 'field_569215f3fa9ae',
@@ -1030,14 +1030,38 @@ acf_add_local_field_group(array (
             ),
             array (
               'key' => 'field_569e21958f13a',
-              'label' => 'Credibility Logos',
-              'name' => 'credibility_logos',
+              'label' => 'Credibility Logos Left',
+              'name' => 'credibility_logos_left',
               'type' => 'image',
               'instructions' => 'Logos on a transparent background is ideal. (PNG format.)',
               'required' => 0,
               'conditional_logic' => 0,
               'wrapper' => array (
-                'width' => '',
+                'width' => 50,
+                'class' => '',
+                'id' => '',
+              ),
+              'return_format' => 'array',
+              'preview_size' => 'medium',
+              'library' => 'all',
+              'min_width' => '',
+              'min_height' => '',
+              'min_size' => '',
+              'max_width' => '',
+              'max_height' => '',
+              'max_size' => '',
+              'mime_types' => '',
+            ),
+            array (
+              'key' => 'field_56a09ad9943ba',
+              'label' => 'Credibility Logos Right',
+              'name' => 'credibility_logos_right',
+              'type' => 'image',
+              'instructions' => 'Logos on a transparent background is ideal. (PNG format.)',
+              'required' => 0,
+              'conditional_logic' => 0,
+              'wrapper' => array (
+                'width' => 50,
                 'class' => '',
                 'id' => '',
               ),
