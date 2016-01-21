@@ -83,6 +83,9 @@ class Sellaporter {
     // Adds a field to the REST API response telling us the current phase.
     add_action('rest_api_init', array($this, 'register_phase_field'));
 
+    // Registers oEmbed wrapping for better responsive output.
+    add_filter('embed_oembed_html', array($this, 'register_responsive_oembed_container'), 10, 3);
+
     // Registers short codes for content parsing
     add_action('after_setup_theme', array($this, 'register_shortcodes'));
   }
@@ -217,6 +220,19 @@ class Sellaporter {
     } else {
       echo 'ACF acf_add_options_page does not exist.';
     }
+  }
+
+  /**
+   * This method catches the WP oEmbed process to add a responsive wrapper.
+   * @param  string $html the oEmbed markup
+   * @return string       the modified oEmbed markup
+   */
+  public function register_responsive_oembed_container($html) {
+    if (!$this->_is_sellaporter_page()) {
+      return $html;
+    }
+
+    return !!$html ? '<div class="sp-video__container">'.$html.'</div>' : '';
   }
 
   public function register_shortcodes() {
