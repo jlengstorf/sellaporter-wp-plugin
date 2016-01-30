@@ -53,6 +53,9 @@ class Sellaporter {
       array($this, 'register_templates')
     );
 
+    // Add SVG MIME types to WordPress's allowed uploads list.
+    add_filter('upload_mimes', array($this, 'wp_allow_svg_upload'));
+
     // Add `sellaporter` query vars to the whitelist for WP and WP REST API.
     add_filter('query_vars', array($this, 'register_valid_query_vars'));
     add_filter('rest_query_vars', array($this, 'register_valid_query_vars'));
@@ -174,6 +177,11 @@ class Sellaporter {
     } else {
       echo 'TODO do we need to handle this?';
     }
+  }
+
+  public function wp_allow_svg_upload($mimes) {
+    $mimes['svg'] = 'image/svg+xml';
+    return $mimes;
   }
 
   public function register_phase_field() {
