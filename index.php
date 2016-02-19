@@ -247,6 +247,38 @@ class Sellaporter {
     add_shortcode('sp', array($this, 'shortcode_phase_conditional'));
     add_shortcode('spButton', array($this, 'shortcode_cta_button'));
     add_shortcode('spNotice', array($this, 'shortcode_notice'));
+    add_shortcode('spFinalists', array($this, 'shortcode_finalists'));
+  }
+
+  /**
+   * Inserts a React element for displaying finalists in an interactive way.
+   *
+   * Example:
+   *
+   *    <div
+   *      class="sp-finalists"
+   *      data-group="men"
+   *      data-filter="over-50"
+   *    ></div>
+   *
+   * @param  array $atts optional configuration attributes for the element
+   * @return string      the div to contain the React element
+   */
+  public function shortcode_finalists($atts) {
+    $classes = array('sp-finalists', 'sp-finalists--no-js');
+    $attributes = '';
+    if (is_array($atts)) {
+      foreach ($atts as $att => $val) {
+        if (!!$att) {
+          $attributes .= sprintf(' data-%s="%s"', $att, $val);
+        }
+      }
+    }
+
+    return sprintf('<div class="%s"%s></div>',
+      implode(' ', $classes),
+      $attributes
+    );
   }
 
   public function shortcode_notice($atts, $content) {
